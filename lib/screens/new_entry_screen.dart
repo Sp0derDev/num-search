@@ -9,7 +9,7 @@ import 'package:num_search/models/query_response.dart';
 import 'package:num_search/models/user.dart';
 import 'package:num_search/services/database.dart';
 import 'package:provider/provider.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
+// import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class NewEntryScreen extends StatefulWidget {
   @override
@@ -21,27 +21,27 @@ class _NewEntryScreenState extends State<NewEntryScreen> {
   TextEditingController numberFieldController = TextEditingController();
   TextEditingController linkFieldController = TextEditingController();
   Database db = Database();
-  final RoundedLoadingButtonController _addBtnController =
-      new RoundedLoadingButtonController();
+  // final RoundedLoadingButtonController _addBtnController =
+  //     new RoundedLoadingButtonController();
 
   @override
   Widget build(BuildContext context) {
     SiteUser user = Provider.of<SiteUser>(context);
-    Future _addToDb(EntryRecord record) async {
-      _addBtnController.start();
-      QueryResponse response = await db.addEntryRecord(record, user);
-      if (response.sucess) {
-        _addBtnController.success();
-        Timer(Duration(seconds: 2), () {
-          Navigator.pushReplacementNamed(context, '/dashboard');
-        });
-      } else {
-        _addBtnController.error();
-        Timer(Duration(seconds: 2), () {
-          _addBtnController.reset();
-        });
-      }
-    }
+    // Future _addToDb(EntryRecord record) async {
+    //   _addBtnController.start();
+    //   QueryResponse response = await db.addEntryRecord(record, user);
+    //   if (response.sucess) {
+    //     _addBtnController.success();
+    //     Timer(Duration(seconds: 2), () {
+    //       Navigator.pushReplacementNamed(context, '/dashboard');
+    //     });
+    //   } else {
+    //     _addBtnController.error();
+    //     Timer(Duration(seconds: 2), () {
+    //       _addBtnController.reset();
+    //     });
+    //   }
+    // }
 
     return Scaffold(
       appBar: AppBar(title: Text('New Entry')),
@@ -80,24 +80,24 @@ class _NewEntryScreenState extends State<NewEntryScreen> {
             SizedBox(
               height: 30,
             ),
-            RoundedLoadingButton(
-              controller: _addBtnController,
-              width: MediaQuery.of(context).size.width * 0.7,
-              height: 50,
-              color: kThemeColor,
-              onPressed: () => _addToDb(EntryRecord(
-                  title: titleFieldController.value.text,
-                  type: EntryType.Link,
-                  number: int.parse(numberFieldController.value.text),
-                  url: linkFieldController.value.text)),
-              child: Text(
-                "Add To Database",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700),
-              ),
-            ),
+            // RoundedLoadingButton(
+            //   controller: _addBtnController,
+            //   width: MediaQuery.of(context).size.width * 0.7,
+            //   height: 50,
+            //   color: kThemeColor,
+            //   onPressed: () => _addToDb(EntryRecord(
+            //       title: titleFieldController.value.text,
+            //       type: EntryType.Link,
+            //       number: int.parse(numberFieldController.value.text),
+            //       url: linkFieldController.value.text)),
+            //   child: Text(
+            //     "Add To Database",
+            //     style: TextStyle(
+            //         color: Colors.white,
+            //         fontSize: 16,
+            //         fontWeight: FontWeight.w700),
+            //   ),
+            // ),
           ],
         ),
       ),

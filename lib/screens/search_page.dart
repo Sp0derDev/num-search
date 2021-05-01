@@ -6,7 +6,7 @@ import 'package:num_search/components/standard_text_field.dart';
 import 'package:num_search/models/query_response.dart';
 import 'package:num_search/services/auth.dart';
 import 'package:num_search/services/database.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
+// import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -17,26 +17,26 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   TextEditingController numberFieldController = TextEditingController();
   Database db = Database();
-  final RoundedLoadingButtonController _searchBtnController =
-      new RoundedLoadingButtonController();
+  // final RoundedLoadingButtonController _searchBtnController =
+  //     new RoundedLoadingButtonController();
 
-  Future _findEntry() async {
-    _searchBtnController.start();
-    QueryResponse response = await db.findEntry('Eud1aZTzdDhy2RjJYVNl659yVj93',
-        int.parse(numberFieldController.value.text));
-    if (response.sucess) {
-      _searchBtnController.success();
-      Timer(Duration(seconds: 2), () {
-        launch(response.result.url);
-        _searchBtnController.reset();
-      });
-    } else {
-      _searchBtnController.error();
-      Timer(Duration(seconds: 2), () {
-        _searchBtnController.reset();
-      });
-    }
-  }
+  // Future _findEntry() async {
+  //   _searchBtnController.start();
+  //   QueryResponse response = await db.findEntry('Eud1aZTzdDhy2RjJYVNl659yVj93',
+  //       int.parse(numberFieldController.value.text));
+  //   if (response.sucess) {
+  //     _searchBtnController.success();
+  //     Timer(Duration(seconds: 2), () {
+  //       launch(response.result.url);
+  //       _searchBtnController.reset();
+  //     });
+  //   } else {
+  //     _searchBtnController.error();
+  //     Timer(Duration(seconds: 2), () {
+  //       _searchBtnController.reset();
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -60,20 +60,20 @@ class _SearchScreenState extends State<SearchScreen> {
             SizedBox(
               height: 10,
             ),
-            RoundedLoadingButton(
-              controller: _searchBtnController,
-              width: MediaQuery.of(context).size.width * 0.4,
-              height: 50,
-              color: kThemeColor,
-              onPressed: () => _findEntry(),
-              child: Text(
-                "View Content",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700),
-              ),
-            ),
+            // RoundedLoadingButton(
+            //   controller: _searchBtnController,
+            //   width: MediaQuery.of(context).size.width * 0.4,
+            //   height: 50,
+            //   color: kThemeColor,
+            //   onPressed: () => _findEntry(),
+            //   child: Text(
+            //     "View Content",
+            //     style: TextStyle(
+            //         color: Colors.white,
+            //         fontSize: 16,
+            //         fontWeight: FontWeight.w700),
+            //   ),
+            // ),
           ],
         ),
       ),
