@@ -51,13 +51,13 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    // auth.getUser.then((user) {
-    //   print(user);
-    //   if (user != null) {
-    //     Navigator.pushNamedAndRemoveUntil(context, '/profile', (_) => false);
-    //   }
-    //   ;
-    // });
+    auth.getUser.then((user) {
+      print(user);
+      if (user != null) {
+        Navigator.pushNamedAndRemoveUntil(context, '/dashboard', (_) => false);
+      }
+      ;
+    });
   }
 
   @override
