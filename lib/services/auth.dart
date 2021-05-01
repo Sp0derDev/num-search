@@ -12,7 +12,6 @@ class AuthService {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   SiteUser _customModelForFirebaseUser(User user) {
-    print('Hola');
     print(user);
     print(user.displayName);
     return user != null
@@ -30,7 +29,8 @@ class AuthService {
   }
 
   //User get getUser => FirebaseAuth.instance.currentUser;
-  Future<User> get getUser async => await _auth.currentUser;
+  Future<SiteUser> get getUser async =>
+      _customModelForFirebaseUser(await _auth.currentUserAsync);
 
   //Stream<FirebaseUser> get user => _auth.onAuthStateChanged;
 
